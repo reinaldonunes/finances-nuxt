@@ -28,8 +28,3 @@ export default {
   name: 'HeaderBar'
 }
 </script>
-<style>
-  .bg-darkness{
-    background:#202020;
-  }
-</style>

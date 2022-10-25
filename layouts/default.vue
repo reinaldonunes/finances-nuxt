@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderBar />
-    <Nuxt />
+    <Nuxt class="container py-4 px-3" />
   </div>
 </template>
 
@@ -19,3 +19,13 @@
         methods: {},
     };
 </script>
+<style>
+  .bg-darkness{
+    background:#202020;
+  }
+
+  .text-nuxt-indigo{
+    color:  #6366f1;
+  }
+
+</style>
