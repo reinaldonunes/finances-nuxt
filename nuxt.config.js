@@ -1,9 +1,12 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'finances-nuxt',
+    title: 'Minhas Finanças - Nuxt.js',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pt-Br'
+    },
+    bodyAttrs: {
+      class: 'bg-light'
     },
     meta: [
       { charset: 'utf-8' },
