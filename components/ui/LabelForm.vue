@@ -1,5 +1,5 @@
 <template>
-  <label class="block text-gray-700 text-sm font-semibold mb-2 tracking-wide">
+  <label class="mb-2">
     <slot />
   </label>
 </template>

@@ -1,9 +1,7 @@
 <template>
   <div class="mt-2">
     <div class="d-flex mb-2">
-      <h1 class="font-weight-bold h3 text-nuxt-indigo">
-        Categorias
-      </h1>
+      <TitleHeading>Categorias</TitleHeading>
     </div>
     
     <div class="d-grid">
@@ -73,6 +71,7 @@ import AppButton from '@/components/ui/ButtonAct';
 import AppFormInput from '@/components/ui/InputForm';
 import AppFormLabel from '@/components/ui/LabelForm';
 import AppFormSelect from '@/components/ui/SelectForm';
+import TitleHeading from '@/components/ui/TitleHeading.vue'
 export default {
   name: 'CategoriesPage',
   components: {
@@ -80,6 +79,7 @@ export default {
     AppFormInput,
     AppFormLabel,
     AppFormSelect,
+    TitleHeading
   },
 
   data() {

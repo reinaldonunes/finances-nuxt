@@ -1,6 +1,6 @@
 <template>
   <select
-    class="block w-full transition ease-in-out duration-150 text-gray-800 bg-white placeholder-gray-300 border border-gray-300 focus:border-blue-300 focus:ring focus:ring-opacity-50 focus:ring-blue-200 shadow-sm text-sm px-4 py-2 rounded"
+    class="form-control"
     @change="onChange"
   >
     <option value="">Selecione</option>
