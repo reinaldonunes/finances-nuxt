@@ -8,8 +8,8 @@
           </figure>
           
           <ul class="mb-0">
-            <NuxtLink to="/" class="btn btn-sm btn-dark mb-0">Home</NuxtLink>
-            <NuxtLink to="/" class="btn btn-sm btn-dark mb-0">Categorias</NuxtLink>
+            <NuxtLink to="/" class="btn btn-sm mb-0 text-white" :class="{'btn-dark': $route.name === 'index'}">Home</NuxtLink>
+            <NuxtLink to="/" class="btn btn-sm mb-0 text-white" :class="{'btn-dark': $route.name === 'categories'}">Categorias</NuxtLink>
           </ul>
         </div>
 
