@@ -16,65 +16,52 @@
         </div>
       </div>
 
-      <table class="table box-shadow">
-        <thead class="bg-dark">
-        <tr>
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Categoria
-          </th>
-          <th
-            scope="col"
-            class="relative px-6 py-3"
-          >
-            <span class="sr-only">Edit</span>
-          </th>
-        </tr>
+      <table class="table">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col" colspan="2">Categoria</th>
+          </tr>
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-        <tr class="bg-white">
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            <div class="w-72">
-              <AppFormInput />
-            </div>
-          </td>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="bg-white">
+            <td class="border-bottom-dark">
+              <div class="w-50">
+                <AppFormInput />
+              </div>
+            </td>
+            <td class="text-right">
+              <a
+                href="#"
+                class="btn btn-sm btn-outline-secondary"
+              >Editar
+              </a>
 
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-4">
-            <a
-              href="#"
-              class="text-indigo-600 hover:text-indigo-900"
-            >Edit
-            </a>
+              <a
+                href="#"
+                class="btn btn-sm btn-outline-danger"
+              >Excluir
+              </a>
+            </td>
+          </tr>
+        
+          <tr class="bg-white">
+            <td class="border-bottom-dark">
+              Item adicionado
+            </td>
+            <td class="text-right">
+              <a
+                href="#"
+                class="btn btn-sm btn-outline-secondary"
+              >Editar
+              </a>
 
-            <a
-              href="#"
-              class="text-red-600 hover:text-red-900"
-            >Excluir
-            </a>
-          </td>
-        </tr>
-
-        <tr class="bg-white">
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            Categoria 2
-          </td>
-
-          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-4">
-            <a
-              href="#"
-              class="text-indigo-600 hover:text-indigo-900"
-            >Edit
-            </a>
-
-            <a
-              href="#"
-              class="text-red-600 hover:text-red-900"
-            >Excluir
-            </a>
-          </td>
-        </tr>
+              <a
+                href="#"
+                class="btn btn-sm btn-outline-danger"
+              >Excluir
+              </a>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -102,3 +89,13 @@ export default {
   methods: {},
 };
 </script>
+<style scoped>
+  .table{
+    border-radius:5px;
+    overflow:hidden;
+  }
+  .table th,
+  .table td{
+    border:0px !important;
+  }
+</style>
