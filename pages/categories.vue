@@ -22,9 +22,9 @@
             <th scope="col" colspan="2">Categoria</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
           <tr class="bg-white">
-            <td class="border-bottom-dark">
+            <td>
               <div class="w-50">
                 <AppFormInput />
               </div>
@@ -44,8 +44,8 @@
             </td>
           </tr>
         
-          <tr class="bg-white">
-            <td class="border-bottom-dark">
+          <tr class="bg-white border-top">
+            <td>
               Item adicionado
             </td>
             <td class="text-right">
