@@ -44,14 +44,19 @@
         
           <tr class="bg-white border-top" v-for="item in categories" :key="item.id">
             <td class="align-middle">
-              {{ item.name }}
+              <div class="w-50" v-if="item.is_updating">
+                <AppFormInput v-model="item.name" />
+              </div>
+              <div v-else>
+                {{ item.name }}
+              </div>
             </td>
             <td class="text-right">
-              <a
-                href="#"
+              <button
                 class="btn btn-sm btn-outline-secondary"
+                @click.stop.prevent="toUpdate(item)"
                 >Editar
-              </a>
+              </button>
               
               <button
                 class="btn btn-sm btn-outline-danger" 
@@ -69,16 +74,20 @@
 
     <b-modal id="bv-modal-example" hide-footer>
       <template #modal-title>
-        Excluir item
+        Exclusão de registro
       </template>
-      <div class="d-block text-center">
-        <h5>Deseja mesmo excluir o item:<br /><strong>{{ modal.itemName }}</strong>?</h5>
-      </div>
-      <div class="d-flex justify-content-between mt-4">
-        <b-button class="mr-1 btn btn-secondary mt-0" block @click="$bvModal.hide('bv-modal-example')">Cancelar</b-button>
-        <b-button class="mr-1 btn btn-danger mt-0" block @click="deleteCategory(modal.itemId)">Confirmar</b-button>
-      
-      </div>
+      <section v-if="!modal.progress">
+        <div class="d-block text-center">
+          <h5>Deseja mesmo excluir o item:<br /><strong>{{ modal.itemName }}</strong>?</h5>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <b-button class="mr-1 btn btn-secondary mt-0" block @click="$bvModal.hide('bv-modal-example')">Cancelar</b-button>
+          <b-button class="mr-1 btn btn-danger mt-0" block @click="deleteCategory(modal.itemId)">Confirmar</b-button>
+        </div>
+      </section>
+      <section v-else>
+        <h5 class="text-success text-center">O item foi removido com sucesso!</h5>
+      </section>
     </b-modal>
 
   </div>
@@ -104,6 +113,7 @@ export default {
   async asyncData( {store} ){
     return{
       categories: await store.dispatch('categories/getCategories')
+        .then(response => response.map(o => ({...o, is_updating: false })))
     }
   },
 
@@ -111,21 +121,28 @@ export default {
     return {
       modal: {
         itemName: '',
-        itemId: null
+        itemId: null,
+        progress:false
       }
     };
   },
 
   methods: {
     openModal(item){
+      this.modal.progress = false
       this.modal.itemName = item.name
       this.modal.itemId = item.id
       this.$bvModal.show('bv-modal-example')
     },
-    
+    toUpdate(item){
+      item.is_updating = true
+    },
+
     deleteCategory(id){
+      //do a progress load
       setTimeout(() => {
-        this.$store.dispatch('categories/deleteItemCateogory', id)
+        this.modal.progress = true
+        this.$store.dispatch('categories/deleteItemCategory', id)
       },3500)
     }
   },
