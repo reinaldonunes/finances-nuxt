@@ -18,9 +18,5 @@ export default {
     FilterData,
     TransactionsList
   },
-  data() {
-    return {
-    }
-  }
 }
 </script>

@@ -9,22 +9,22 @@
       <div class="row">
         <div class="col-lg-3 col-sm-6 col-12 mb-2">
           <LabelForm>Data da transação</LabelForm>
-          <InputForm type="date" />
+          <InputForm type="date" v-model="form.date" />
         </div>
 
         <div class="col-lg-3 col-sm-6 col-12 mb-2">
           <LabelForm>Valor</LabelForm>
-          <InputForm />
+          <InputForm v-model="form.amount" type="number"/>
         </div>
 
         <div class="col-lg-3 col-sm-6 col-12 mb-2">
           <LabelForm>Descrição</LabelForm>
-          <InputForm />
+          <InputForm v-model="form.description"/>
         </div>
 
         <div class="col-lg-3 col-sm-6 col-12 mb-2">
           <LabelForm>Categoria</LabelForm>
-          <SelectForm :options="[{ name: 'Licença de softwares', id: 1 }]" />
+          <SelectForm :options="[{ name: 'Equipamentos de TI, assinatura de softwares e cursos', id: 1 }]" v-model="form.categoryId" />
         </div>
       
         <div class="col-12 mt-4">
@@ -32,7 +32,7 @@
             <a href="" class="btn text-danger">
               Cancelar
             </a>
-            <ButtonAct>
+            <ButtonAct @click="addTransaction">
               Adicionar
             </ButtonAct>
           </div>
@@ -57,6 +57,22 @@ export default {
     SelectForm,
     InputForm,
     LabelForm,
+  },
+
+  data(){
+    return{
+      form: {
+        date: '',
+        amount: 0,
+        description: '',
+        categoryId: ''
+      }
+    }
+  },
+  methods:{
+    addTransaction(){
+      this.$store.dispatch('transactions/addTransaction', this.form)
+    }
   }
 
 }
