@@ -3,31 +3,31 @@
     <div class="row">
       <div class="col-lg-3 col-sm-6 col-12 mb-2">
         <LabelForm>Data da transação</LabelForm>
-        <InputForm type="date" />
+        <InputForm type="date" v-model="localTransaction.date" />
       </div>
   
       <div class="col-lg-3 col-sm-6 col-12 mb-2">
         <LabelForm>Valor</LabelForm>
-        <InputForm />
+        <InputForm v-model="localTransaction.amount" />
       </div>
   
       <div class="col-lg-3 col-sm-6 col-12 mb-2">
         <LabelForm>Descrição</LabelForm>
-        <InputForm />
+        <InputForm v-model="localTransaction.description"  />
       </div>
   
       <div class="col-lg-3 col-sm-6 col-12 mb-2">
         <LabelForm>Categoria</LabelForm>
-        <SelectForm :options="[{ name: 'Licença de softwares', id: 1 }]" />
+        <SelectForm :options="categories" v-model="localTransaction.categoryId"  />
       </div>
   
       <div class="col-12 mt-4">
         <div class="d-flex justify-content-end">
-          <a href="" class="btn text-danger">
+          <button @click="onCancel" class="btn text-danger">
             Cancelar
-          </a>
+          </button>
           <ButtonEdit>
-            Editar
+            Salvar
           </ButtonEdit>
         </div>
       </div>
@@ -48,10 +48,39 @@ export default {
     InputForm,
     SelectForm,
     ButtonEdit
+  },
+  props: {
+    transaction: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+
+  data(){
+    return{
+      categories: [],
+      localTransaction: JSON.parse(JSON.stringify(this.transaction)),
+    }
+  },
+
+  async fetch() {
+    this.categories = await this.$store.dispatch('categories/getCategories')
+  },
+
+  methods: {
+    updateTransaction(){
+      const data = {
+        date: '',
+        description: '',
+        amount: '',
+        categoryId: ''
+      }
+      this.$store.dispatch('transaction/updateTransaction', { id: this.transaction.id, data: data})
+    },
+
+    onCancel(){
+      this.$emit('cancel')
+    }
   }
 }
 </script>
-
-<style>
-
-</style>

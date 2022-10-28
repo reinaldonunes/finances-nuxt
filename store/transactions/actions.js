@@ -7,7 +7,7 @@ export default{
     return this.$axios.$post('transactions', data)
   },
 
-  getCategories(){
-    return this.$axios.$get('categories')
-  },
+  updateTransaction(context, {id, data}){
+    return this.$axios.$patch(`transactions/${id}`, data)
+  }
 }
