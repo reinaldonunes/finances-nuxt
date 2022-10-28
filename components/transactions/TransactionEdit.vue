@@ -63,7 +63,7 @@ export default {
         date: this.transaction.date,
         description: this.transaction.description,
         amount: this.transaction.amount,
-        categoryId: this.transaction.categoryID
+        categoryId: this.transaction.category.id,
       }
     }
   },
@@ -74,13 +74,14 @@ export default {
 
   methods: {
     updateTransaction(){
-      const data = {
-        date: this.localTransaction.date,
-        description: this.localTransaction.description,
-        amount: this.localTransaction.amount,
-        categoryId: this.localTransaction.categoryId
-      }
-      this.$store.dispatch('transactions/updateTransaction', { id: this.transaction.id, data: data})
+      this.$store.dispatch('transactions/updateTransaction', { id: this.transaction.id, data: this.localTransaction})
+        .then((response) => {
+          this.$emit('update', {
+            ...response,
+            category: this.categories.find(q => q.id == this.localTransaction.categoryId),
+          })
+          this.onCancel();
+        })
         
     },
 

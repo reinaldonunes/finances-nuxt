@@ -23,7 +23,8 @@
       <TransactionEdit
         v-if="payment.is_payable"
         :transaction="transaction" 
-        @cancel="payment.is_payable = false" 
+        @cancel="payment.is_payable = false"
+        @update="onUpdate"
       />
     </transition>
   </div>
@@ -55,7 +56,9 @@ export default {
   },
  
   methods:{
-    
+    onUpdate(transaction){
+      this.$emit('update', transaction)
+    }
   }
 }
 </script>

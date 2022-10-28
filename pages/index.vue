@@ -2,7 +2,10 @@
   <div class="d-grid gap-3">
     <TransactionBar @after-add="afterAdd" />
     <FilterData />
-    <TransactionsList :transactions="transactionsGrouped" />
+    <TransactionsList
+      :transactions="transactionsGrouped"
+      @update="onUpdate"   
+    />
   </div>
 </template>
 
@@ -34,6 +37,13 @@ export default {
   methods:{
     afterAdd(transaction){
       this.transactions.push(transaction)
+    },
+
+    onUpdate(transaction) {
+      console.log(JSON.stringify(transaction))
+
+      const idx = this.transactions.findIndex(o => o.id == transaction.id)
+      this.transactions.splice(idx, 1, transaction)
     }
   }
   

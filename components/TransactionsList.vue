@@ -11,7 +11,10 @@
         v-for="transaction in group"
         :key="transaction.id"
       >
-        <TransactionCard :transaction="transaction" />
+        <TransactionCard
+          :transaction="transaction"
+          @update="onUpdate"  
+        />
       </aside>
     </div>
 
@@ -44,6 +47,10 @@ export default {
   methods:{
     parseDate(date){
       return this.$dayjs(date).format('DD/MM/YYYY')
+    },
+
+    onUpdate(transaction) {
+      this.$emit('update', transaction)
     }
   },
 
