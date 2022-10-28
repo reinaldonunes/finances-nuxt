@@ -25,7 +25,7 @@
 
           <div class="col-lg-3 col-sm-6 col-12 mb-2">
             <LabelForm>Categoria</LabelForm>
-            <SelectForm :options="[{ name: 'Equipamentos de TI, assinatura de softwares e cursos', id: 1 }]" v-model="form.categoryId" />
+            <SelectForm :options="categories" v-model="form.categoryId" />
           </div>
         
           <div class="col-12 mt-4">
@@ -62,6 +62,11 @@ export default {
     LabelForm,
   },
 
+  async fetch(){
+    this.categories = await this.$store.dispatch('categories/getCategories')
+  },
+
+
   data(){
     return{
       form: {
@@ -73,7 +78,9 @@ export default {
 
       transaction: {
         new: false
-      }
+      },
+
+      categories: []
     }
   },
   methods:{
