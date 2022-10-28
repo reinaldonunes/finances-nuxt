@@ -76,6 +76,13 @@
       "description": "hg",
       "categoryId": "3",
       "id": 11
+    },
+    {
+      "date": "2022-10-28",
+      "amount": "32",
+      "description": "afdsafsd",
+      "categoryId": "3",
+      "id": 12
     }
   ],
   "categories": [

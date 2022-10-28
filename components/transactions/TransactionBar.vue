@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import TitleHeading from '../components/ui/TitleHeading.vue'
+import TitleHeading from '@/components/ui/TitleHeading.vue'
 import ButtonAct from '@/components/ui/ButtonAct.vue'
 import SelectForm from '@/components/ui/SelectForm.vue'
 import InputForm from '@/components/ui/InputForm.vue'

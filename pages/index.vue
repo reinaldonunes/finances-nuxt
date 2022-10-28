@@ -8,7 +8,7 @@
 
 <script>
 import { groupBy, orderBy } from 'lodash'
-import TransactionBar from '@/components/TransactionBar'
+import TransactionBar from '@/components/transactions/TransactionBar'
 import FilterData from '@/components/FilterData'
 import TransactionsList from "@/components/TransactionsList"
 
