@@ -26,7 +26,7 @@
           <button @click="onCancel" class="btn text-danger">
             Cancelar
           </button>
-          <ButtonEdit>
+          <ButtonEdit @click="updateTransaction">
             Salvar
           </ButtonEdit>
         </div>
@@ -59,7 +59,12 @@ export default {
   data(){
     return{
       categories: [],
-      localTransaction: JSON.parse(JSON.stringify(this.transaction)),
+      localTransaction: {
+        date: this.transaction.date,
+        description: this.transaction.description,
+        amount: this.transaction.amount,
+        categoryId: this.transaction.categoryID
+      }
     }
   },
 
@@ -70,12 +75,13 @@ export default {
   methods: {
     updateTransaction(){
       const data = {
-        date: '',
-        description: '',
-        amount: '',
-        categoryId: ''
+        date: this.localTransaction.date,
+        description: this.localTransaction.description,
+        amount: this.localTransaction.amount,
+        categoryId: this.localTransaction.categoryId
       }
-      this.$store.dispatch('transaction/updateTransaction', { id: this.transaction.id, data: data})
+      this.$store.dispatch('transactions/updateTransaction', { id: this.transaction.id, data: data})
+        
     },
 
     onCancel(){
