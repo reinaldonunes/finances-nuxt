@@ -5,7 +5,7 @@
       v-for="(group, index) in transactions"
       :key="index"
     >
-      <h6 class="mb-2 font-weight-bold">{{ parseDate(index) }}</h6>
+      <h6 class="font-weight-bold tab-date">{{ parseDate(index) }}</h6>
       <aside
         class="card py-3"
         v-for="transaction in group"
@@ -25,40 +25,7 @@
           </div>
         </div>
         <transition mode="out-in">
-          <div class="card-body" v-show="payment.is_payable">
-            <div class="row">
-              <div class="col-lg-3 col-sm-6 col-12 mb-2">
-                <LabelForm>Data da transação</LabelForm>
-                <InputForm type="date" />
-              </div>
-
-              <div class="col-lg-3 col-sm-6 col-12 mb-2">
-                <LabelForm>Valor</LabelForm>
-                <InputForm />
-              </div>
-
-              <div class="col-lg-3 col-sm-6 col-12 mb-2">
-                <LabelForm>Descrição</LabelForm>
-                <InputForm />
-              </div>
-
-              <div class="col-lg-3 col-sm-6 col-12 mb-2">
-                <LabelForm>Categoria</LabelForm>
-                <SelectForm :options="[{ name: 'Licença de softwares', id: 1 }]" />
-              </div>
-            
-              <div class="col-12 mt-4">
-                <div class="d-flex justify-content-end">
-                  <a href="" class="btn text-danger">
-                    Cancelar
-                  </a>
-                  <ButtonEdit>
-                    Editar
-                  </ButtonEdit>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TransactionEdit v-show="payment.is_payable" />
         </transition>
       </aside>
     </div>
@@ -71,6 +38,7 @@ import SelectForm from '@/components/ui/SelectForm.vue'
 import InputForm from '@/components/ui/InputForm.vue'
 import LabelForm from '@/components/ui/LabelForm.vue'
 import ButtonEdit from '@/components/ui/ButtonAct.vue'
+import TransactionEdit from '@/components/transactions/TransactionEdit.vue'
 
 export default {
   name: 'TransactionsList',
@@ -79,6 +47,7 @@ export default {
     InputForm,
     LabelForm,
     ButtonEdit,
+    TransactionEdit
   },
   props: {
     transactions:{
@@ -105,5 +74,19 @@ export default {
 </script>
 
 <style>
+.tab-date{
+    padding:12px;
+    border-radius:4px 4px 0px 0px;
+    border:1px solid rgba(0, 0, 0, 0.125);
+    z-index:2;
+    position:relative;
+    display:block;
+    background:#eee;
+    width:fit-content;
+    margin-bottom:-1px;
+  }
 
+  .card{
+    margin-bottom:-5px;
+  }
 </style>

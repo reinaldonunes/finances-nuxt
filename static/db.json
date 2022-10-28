@@ -55,6 +55,34 @@
       "amount": 100,
       "date": "2022-01-15",
       "categoryId": 5
+    },
+    {
+      "date": "2022-10-28",
+      "amount": "1500",
+      "description": "teste update dom",
+      "categoryId": "3",
+      "id": 9
+    },
+    {
+      "date": "2022-10-28",
+      "amount": "36835665",
+      "description": "mais um",
+      "categoryId": "3",
+      "id": 10
+    },
+    {
+      "date": "2022-10-28",
+      "amount": "55852",
+      "description": "hg",
+      "categoryId": "3",
+      "id": 11
+    },
+    {
+      "date": "2022-10-28",
+      "amount": "32",
+      "description": "afdsafsd",
+      "categoryId": "3",
+      "id": 12
     }
   ],
   "categories": [

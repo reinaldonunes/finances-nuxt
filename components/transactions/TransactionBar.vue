@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import TitleHeading from '../components/ui/TitleHeading.vue'
+import TitleHeading from '@/components/ui/TitleHeading.vue'
 import ButtonAct from '@/components/ui/ButtonAct.vue'
 import SelectForm from '@/components/ui/SelectForm.vue'
 import InputForm from '@/components/ui/InputForm.vue'
@@ -86,6 +86,12 @@ export default {
   methods:{
     addTransaction(){
       this.$store.dispatch('transactions/addTransaction', this.form)
+        .then((response) =>{
+          this.$emit('after-add', {
+            ...response,
+            category: this.categories.find(q => q.id == this.form.categoryId)
+          })
+        })
     }
   }
 
