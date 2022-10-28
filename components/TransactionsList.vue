@@ -5,7 +5,7 @@
       v-for="(group, index) in transactions"
       :key="index"
     >
-      <h6 class="mb-2 font-weight-bold">{{ parseDate(index) }}</h6>
+      <h6 class="font-weight-bold tab-date">{{ parseDate(index) }}</h6>
       <aside
         class="card py-3"
         v-for="transaction in group"
@@ -105,5 +105,19 @@ export default {
 </script>
 
 <style>
+.tab-date{
+    padding:12px;
+    border-radius:4px 4px 0px 0px;
+    border:1px solid rgba(0, 0, 0, 0.125);
+    z-index:2;
+    position:relative;
+    display:block;
+    background:#eee;
+    width:fit-content;
+    margin-bottom:-1px;
+  }
 
+  .card{
+    margin-bottom:-5px;
+  }
 </style>

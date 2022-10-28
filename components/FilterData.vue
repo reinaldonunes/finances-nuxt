@@ -2,12 +2,12 @@
   <div class="row mt-5 pb-5 border-bottom">
     <div class="col-md-3 col-12 mb-2">
       <AppFormLabel>Descrição</AppFormLabel>
-      <AppFormInput />
+      <AppFormInput placeholder="Buscar transação..."/>
     </div>
 
     <div class="col-md-3 col-12 mb-2">
       <AppFormLabel>Categoria</AppFormLabel>
-      <AppFormSelect :options="[{ name: 'Licença de softwares', id: 1 }]" />
+      <AppFormSelect :options="categories" />
     </div>
   </div>
 </template>
@@ -25,6 +25,16 @@ export default {
     AppFormInput,
     AppFormLabel,
     AppFormSelect,
+  },
+
+  data(){
+    return{
+      categories: []
+    }
+  },
+
+  async fetch(){
+    this.categories = await this.$store.dispatch('categories/getCategories')
   }
 }
 </script>

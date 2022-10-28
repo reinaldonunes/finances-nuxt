@@ -1,8 +1,8 @@
 <template>
   <div class="d-grid gap-3">
-    <TransactionBar/>
+    <TransactionBar @after-add="afterAdd" />
     <FilterData />
-    <TransactionsList :transactions="transactionGrouped" />
+    <TransactionsList :transactions="transactionsGrouped" />
   </div>
 </template>
 
@@ -26,10 +26,16 @@ export default {
     }
   },
   computed:{
-    transactionGrouped(){
+    transactionsGrouped(){
       return groupBy(orderBy(this.transactions, 'date', 'desc'), 'date')
     }
   },
+
+  methods:{
+    afterAdd(transaction){
+      this.transactions.push(transaction)
+    }
+  }
   
 }
 </script>
