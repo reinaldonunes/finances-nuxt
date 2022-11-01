@@ -17,6 +17,7 @@ import AppButton from '@/components/ui/ButtonAct';
 import AppFormInput from '@/components/ui/InputForm';
 import AppFormLabel from '@/components/ui/LabelForm';
 import AppFormSelect from '@/components/ui/SelectForm';
+import { debounce } from 'lodash';
 
 export default {
   name: 'FilterData',
@@ -45,12 +46,16 @@ export default {
     form:{
       deep: true,
       handler(){
-        this.onFilter()        
+        this.onFilterDebounce()        
       }
     }
   },
 
   methods:{
+    onFilterDebounce: debounce(function(){
+      this.onFilter()
+    }, 300),
+
     onFilter(){
       this.$emit('filter', {
         description: this.form.description || undefined,
