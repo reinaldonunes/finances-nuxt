@@ -58,7 +58,7 @@
     },
     {
       "date": "2022-10-28",
-      "amount": "2500",
+      "amount": "-150",
       "description": "Notebook Ubuntu",
       "categoryId": 1,
       "id": 9
@@ -67,7 +67,7 @@
   "categories": [
     {
       "id": 1,
-      "name": "Equipamentos de TI, assinatura de softwares e cursos"
+      "name": "TI e Tecnologia"
     },
     {
       "id": 2,

@@ -6,11 +6,19 @@
         <span class="lead text-secondary">{{ transaction.description }}</span>
       </div>
       <div class="d-flex align-items-center text-right">
-        <svg class="text-success" width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-        </svg>
-        <span class="font-weight-bold ml-1 mr-1">{{ transaction.amount }}</span>
+        <span v-if="transaction.amount > 0">
+          <svg class="text-success" width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+        </span>
+        <span v-else>
+          <svg class="text-danger" width="18px" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+          </svg>
+        </span>
+        <span class="font-weight-bold ml-1 mr-1">{{ new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL', signDisplay: 'never'}).format(transaction.amount) }}</span>
         <button class="btn" @click="payment.is_payable = !payment.is_payable">
           <svg class="w-4 h-4 drop-icon" fill="none" width="18px" stroke="currentColor" viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg" :class="{'turn-drop' : payment.is_payable}">

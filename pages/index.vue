@@ -1,7 +1,7 @@
 <template>
   <div class="d-grid gap-3">
     <TransactionBar @after-add="afterAdd" />
-    <FilterData />
+    <FilterData @filter="onFilter"/>
     <TransactionsList
       :transactions="transactionsGrouped"
       @update="onUpdate"   
@@ -44,6 +44,13 @@ export default {
 
       const idx = this.transactions.findIndex(o => o.id == transaction.id)
       this.transactions.splice(idx, 1, transaction)
+    },
+
+    onFilter(filter){
+      this.$store.dispatch('transactions/getTransactions', filter)
+        .then((response) => {
+          this.transactions = response
+        })
     }
   }
   

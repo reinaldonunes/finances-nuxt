@@ -9,13 +9,13 @@
           
           <ul class="mb-0">
             <NuxtLink to="/" class="btn btn-sm mb-0 text-white" :class="{'btn-dark': $route.name === 'index'}">Home</NuxtLink>
-            <NuxtLink to="/" class="btn btn-sm mb-0 text-white" :class="{'btn-dark': $route.name === 'categories'}">Categorias</NuxtLink>
+            <NuxtLink to="/categories" class="btn btn-sm mb-0 text-white" :class="{'btn-dark': $route.name === 'categories'}">Categorias</NuxtLink>
           </ul>
         </div>
 
         <div class="d-flex">  
           <button type="button" style="width:44px;height:44px;" class="border-0 p-0 overflow-hidden rounded-circle" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-            <img class="img-fluid rounded-circle p-0" width="52px" height="52px" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <img class="img-fluid rounded-circle p-0" width="52px" height="52px" src="https://avatars.githubusercontent.com/u/14979987?v=4" alt="">
           </button>
         </div>
       </div>
