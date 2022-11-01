@@ -58,8 +58,8 @@
     },
     {
       "date": "2022-10-28",
-      "amount": "150",
-      "description": "Notebook lenovo",
+      "amount": "-150",
+      "description": "Notebook Ubuntu",
       "categoryId": 1,
       "id": 9
     }
